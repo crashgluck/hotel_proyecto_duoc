@@ -1,0 +1,45 @@
+{% extends "reservas/base.html" %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2 class="mb-4">Habitaciones Disponibles</h2>
+    <div class="row">
+        {% for habitacion in habitaciones %}
+        <div class="col-md-4 mb-4">
+            <div class="card h-100">
+                {% if habitacion.imagenes.all %}
+                <div id="carousel{{ habitacion.id }}" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                        {% for imagen in habitacion.imagenes.all %}
+                        <div class="carousel-item {% if forloop.first %}active{% endif %}">
+                            <img src="{{ imagen.imagen.url }}" class="d-block w-100" alt="Imagen Habitación {{ habitacion.numero }}">
+                        </div>
+                        {% endfor %}
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carousel{{ habitacion.id }}" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Anterior</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carousel{{ habitacion.id }}" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Siguiente</span>
+                    </button>
+                </div>
+                {% else %}
+                <img src="https://via.placeholder.com/350x200?text=Sin+Imagen" class="card-img-top" alt="Sin imagen">
+                {% endif %}
+
+                <div class="card-body">
+                    <h5 class="card-title">Habitación {{ habitacion.numero }} - {{ habitacion.categoria }}</h5>
+                    <p class="card-text">{{ habitacion.descripcion }}</p>
+                    <p class="card-text"><strong>Precio por noche:</strong> ${{ habitacion.precio_diario }}</p>
+                    <a href="{% url 'realizar_reserva' habitacion.id %}" class="btn btn-primary {% if not habitacion.disponible %}disabled{% endif %}">
+                        Reservar
+                    </a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
