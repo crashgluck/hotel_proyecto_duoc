@@ -1,6 +1,8 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 class Cliente(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
     nombre = models.CharField(max_length=100)
     apellido = models.CharField(max_length=100)
     rut_pasaporte = models.CharField(max_length=20, unique=True)  # agregado
@@ -22,7 +24,7 @@ class Habitacion(models.Model):
     categoria = models.CharField(max_length=10, choices=CATEGORIAS)
     descripcion = models.TextField()
     equipamiento = models.TextField(blank=True, null=True)  # agregado
-    precio_diario = models.DecimalField(max_digits=8, decimal_places=2)
+    precio_diario = models.IntegerField()  # <-- ahora entero
     disponible = models.BooleanField(default=True)
 
     def __str__(self):
@@ -44,8 +46,8 @@ class Reserva(models.Model):
     fecha_fin = models.DateField()
     fecha_reserva = models.DateTimeField(auto_now_add=True)
     confirmada = models.BooleanField(default=False)
-    monto_total = models.DecimalField(max_digits=8, decimal_places=2, blank=True, null=True)  # agregado
-    monto_reserva = models.DecimalField(max_digits=8, decimal_places=2, blank=True, null=True)  # agregado
+    monto_total = models.IntegerField(blank=True, null=True)   # <-- ahora entero
+    monto_reserva = models.IntegerField(blank=True, null=True) # <-- ahora entero
 
     def __str__(self):
         return f"Reserva {self.id} - {self.cliente}"
@@ -59,8 +61,8 @@ class Pago(models.Model):
     ]
 
     reserva = models.OneToOneField(Reserva, on_delete=models.CASCADE)
-    monto_total = models.DecimalField(max_digits=8, decimal_places=2)
-    monto_reserva = models.DecimalField(max_digits=8, decimal_places=2)
+    monto_total = models.IntegerField()
+    monto_reserva = models.IntegerField()
     metodo = models.CharField(max_length=20, choices=METODOS)  # agregado
     fecha_pago = models.DateTimeField(auto_now_add=True)
     confirmado = models.BooleanField(default=False)

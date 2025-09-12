@@ -1,0 +1,46 @@
+{% extends "reservas/base.html" %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2 class="mb-4">Mis Reservas</h2>
+
+    {% if reservas %}
+        <table class="table table-striped">
+            <thead class="table-dark">
+                <tr>
+                    <th>ID</th>
+                    <th>Habitación</th>
+                    <th>Fecha Inicio</th>
+                    <th>Fecha Fin</th>
+                    <th>Monto Total</th>
+                    <th>Monto Reserva</th>
+                    <th>Confirmada</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for reserva in reservas %}
+                <tr>
+                    <td>{{ reserva.id }}</td>
+                    <td>{{ reserva.habitacion.numero }} - {{ reserva.habitacion.categoria }}</td>
+                    <td>{{ reserva.fecha_inicio }}</td>
+                    <td>{{ reserva.fecha_fin }}</td>
+                    <td>${{ reserva.monto_total }}</td>
+                    <td>${{ reserva.monto_reserva }}</td>
+                    <td>
+                        {% if reserva.confirmada %}
+                            <span class="badge bg-success">Sí</span>
+                        {% else %}
+                            <span class="badge bg-warning text-dark">Pendiente</span>
+                        {% endif %}
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <div class="alert alert-info">
+            No tienes reservas registradas.
+        </div>
+    {% endif %}
+</div>
+{% endblock %}
