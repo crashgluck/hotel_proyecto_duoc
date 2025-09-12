@@ -2,6 +2,24 @@
 
 {% block content %}
 <div class="container mt-5">
+    <div>
+        <div>
+            <h2 class="mb-4">Consultar disponibilidad</h2>
+        </div>
+        <form method="get" class="row mb-4">
+            <div class="col-md-4">
+                <label for="fecha_inicio" class="form-label">Fecha inicio</label>
+                <input type="date" id="fecha_inicio" name="fecha_inicio" class="form-control" value="{{ request.GET.fecha_inicio }}">
+            </div>
+            <div class="col-md-4">
+                <label for="fecha_fin" class="form-label">Fecha fin</label>
+                <input type="date" id="fecha_fin" name="fecha_fin" class="form-control" value="{{ request.GET.fecha_fin }}">
+            </div>
+            <div class="col-md-4 d-flex align-items-end">
+                <button type="submit" class="btn btn-primary w-100">Buscar</button>
+            </div>
+        </form>
+    </div>
     <h2 class="mb-4">Habitaciones Disponibles</h2>
     <div class="row">
         {% for habitacion in habitaciones %}
@@ -33,9 +51,10 @@
                     <h5 class="card-title">Habitación {{ habitacion.numero }} - {{ habitacion.categoria }}</h5>
                     <p class="card-text">{{ habitacion.descripcion }}</p>
                     <p class="card-text"><strong>Precio por noche:</strong> ${{ habitacion.precio_diario }}</p>
-                    <a href="{% url 'realizar_reserva' habitacion.id %}" class="btn btn-primary {% if not habitacion.disponible %}disabled{% endif %}">
-                        Reservar
-                    </a>
+                    <a href="{% url 'realizar_reserva' habitacion.id %}"
+   class="btn btn-primary {% if not habitacion.disponible %}disabled{% endif %}">
+   Reservar
+</a>
                 </div>
             </div>
         </div>
