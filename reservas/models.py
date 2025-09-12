@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.db.models import Q
 
 class Cliente(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
@@ -49,6 +50,13 @@ class Reserva(models.Model):
     monto_total = models.IntegerField(blank=True, null=True)   # <-- ahora entero
     monto_reserva = models.IntegerField(blank=True, null=True) # <-- ahora entero
 
+    def overlaps(self):
+        return Reserva.objects.filter(
+            Q(habitacion=self.habitacion) & 
+            Q(fecha_inicio__lte=self.fecha_fin) & 
+            Q(fecha_fin__gte=self.fecha_inicio)
+        ).exclude(pk=self.pk).exists()
+    
     def __str__(self):
         return f"Reserva {self.id} - {self.cliente}"
 
