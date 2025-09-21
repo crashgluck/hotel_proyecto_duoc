@@ -1,18 +1,6 @@
 {% extends "reservas/base.html" %}
 
 {% block content %}
-
-  {% if messages %}
-    <div class="container mt-3">
-      {% for message in messages %}
-        <div class="alert {{ message.tags }} alert-dismissible fade show" role="alert">
-          {{ message }}
-          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
-      {% endfor %}
-    </div>
-  {% endif %}
-
 <div class="container mt-5">
     <h2 class="mb-4">Mis Reservas</h2>
 
@@ -27,7 +15,6 @@
                     <th>Monto Total</th>
                     <th>Monto Reserva</th>
                     <th>Confirmada</th>
-                    <th>Acciones</th>
                 </tr>
             </thead>
             <tbody>
@@ -45,9 +32,6 @@
                         {% else %}
                             <span class="badge bg-warning text-dark">Pendiente</span>
                         {% endif %}
-                    </td>
-                    <td>
-                        <a href="{% url 'editar_reserva' reserva.id %}" class="btn btn-danger btn-sm">Editar reserva</a>
                     </td>
                 </tr>
                 {% endfor %}
