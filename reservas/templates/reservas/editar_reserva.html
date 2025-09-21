@@ -13,13 +13,14 @@
     </div>
   {% endif %}
 
-<h2 class="mb-4">Reservar Habitación {{ habitacion.numero }}</h2>
+<h2 class="mb-4">Editar Reserva</h2>
 
 <div class="card mb-4">
   <div class="card-body">
-    <p><strong>Categoría:</strong> {{ habitacion.get_categoria_display }}</p>
-    <p><strong>Precio por noche:</strong> ${{ habitacion.precio_diario }}</p>
-    <p><strong>Equipamiento:</strong> {{ habitacion.equipamiento }}</p>
+    <p><strong>Habitación:</strong> {{ reserva.habitacion.numero }}</p>
+    <p><strong>Categoría:</strong> {{ reserva.habitacion.get_categoria_display }}</p>
+    <p><strong>Precio por noche:</strong> ${{ reserva.habitacion.precio_diario }}</p>
+    <p><strong>Equipamiento:</strong> {{ reserva.habitacion.equipamiento }}</p>
   </div>
 </div>
 
@@ -28,7 +29,7 @@
   
   <div class="mb-3">
     <label for="id_fecha_inicio" class="form-label">Fecha de inicio</label>
-      {{ form.fecha_inicio }}
+    {{ form.fecha_inicio }}
   </div>
   
   <div class="mb-3">
@@ -37,14 +38,13 @@
   </div>
 
   {% if form.non_field_errors %}
-<div class="alert alert-danger">
-    {{ form.non_field_errors }}
-</div>
-{% endif %}
+    <div class="alert alert-danger">
+        {{ form.non_field_errors }}
+    </div>
+  {% endif %}
 
-
-  <button type="submit" class="btn btn-success">Confirmar Reserva</button>
-  <a href="{% url 'ver_habitaciones' %}" class="btn btn-secondary">Volver al catálogo</a>
+  <button type="submit" class="btn btn-success">Guardar Cambios</button>
+  <a href="{% url 'mis_reservas' %}" class="btn btn-secondary">Volver a mis reservas</a>
 </form>
 
 {% endblock %}
