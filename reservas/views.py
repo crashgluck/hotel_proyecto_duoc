@@ -1,10 +1,17 @@
 from django.shortcuts import render, redirect, get_object_or_404
+from django.contrib import messages
 from django.contrib.auth import login
 from django.contrib.auth.decorators import login_required
 from .models import Habitacion, Reserva, Cliente
 from .forms import ReservaForm, RegistroForm
 
 def landing(request):
+    # Enviar un mensaje informativo
+    messages.info(request, 'Este es un mensaje informativo.')
+
+    # Puedes enviar otros tipos de mensajes, por ejemplo:
+    # messages.success(request, 'Reserva confirmada correctamente.')
+    # messages.error(request, 'Hubo un error en tu reserva.')
     return render(request, "reservas/landing.html")
 
 def ver_habitaciones(request):

@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'reservas',
+    'administracion',
 ]
 
 MIDDLEWARE = [
@@ -55,7 +56,7 @@ ROOT_URLCONF = 'hotel.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],  # 👈 ruta global
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -124,11 +125,12 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-LOGIN_REDIRECT_URL = '/'   # a dónde redirigir después de login
-LOGOUT_REDIRECT_URL = '/'  # a dónde redirigir después de logout
+LOGIN_REDIRECT_URL = '/habitaciones/'   # a dónde redirigir después de login
+LOGOUT_REDIRECT_URL = '/login/'
 
 
-
+LOGIN_URL = '/login/'
+LOGOUT_URL = '/logout/'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
