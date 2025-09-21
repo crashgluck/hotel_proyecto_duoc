@@ -19,7 +19,6 @@ from django.urls import include, path
 from django.contrib.auth import views as auth_views
 from django.conf import settings
 from django.conf.urls.static import static
-from reservas.views import editar_reserva
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -27,7 +26,6 @@ urlpatterns = [
     path('', include('reservas.urls')),
     path('login/', auth_views.LoginView.as_view(template_name='reservas/login.html'), name='login'),
     path('logout/', auth_views.LogoutView.as_view(), name='logout'),
-    path('reservas/<int:reserva_id>/editar/', editar_reserva, name='editar_reserva'),
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
