@@ -26,6 +26,7 @@ urlpatterns = [
     path('', include('reservas.urls')),
     path('login/', auth_views.LoginView.as_view(template_name='reservas/login.html'), name='login'),
     path('logout/', auth_views.LogoutView.as_view(), name='logout'),
+    path('administracion/', include('administracion.urls')),
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
