@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User, Group
 from .models import Reserva, Cliente
 
 class ReservaForm(forms.ModelForm):
@@ -11,6 +11,7 @@ class ReservaForm(forms.ModelForm):
             'fecha_inicio': forms.DateInput(attrs={'class': 'form-control', 'type': 'date'}),
             'fecha_fin': forms.DateInput(attrs={'class': 'form-control', 'type': 'date'}),
         }
+
 
 class RegistroForm(UserCreationForm):
     email = forms.EmailField(required=True)
@@ -28,8 +29,14 @@ class RegistroForm(UserCreationForm):
         user.email = self.cleaned_data['email']
         if commit:
             user.save()
+
+            # ➝ Asignar al grupo "Clientes"
+            clientes_group, created = Group.objects.get_or_create(name="Clientes")
+            user.groups.add(clientes_group)
+
+            # ➝ Crear registro en Cliente
             Cliente.objects.create(
-                user=user,  # si agregas campo user en Cliente
+                user=user,
                 nombre=self.cleaned_data['nombre'],
                 apellido=self.cleaned_data['apellido'],
                 rut_pasaporte=self.cleaned_data['rut_pasaporte'],

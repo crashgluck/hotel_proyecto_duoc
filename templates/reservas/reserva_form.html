@@ -1,7 +1,8 @@
 {% extends "reservas/base.html" %}
 
 {% block content %}
-<h2 class=  "mb-4">Reservar Habitación {{ habitacion.numero }}</h2>
+<div class="container">
+  <h2 class="mb-4 mt-4">Reservar Habitación {{ habitacion.numero }}</h2>
 
 <div class="card mb-4">
   <div class="card-body">
@@ -67,6 +68,7 @@
       </div>
     </form>
   </div>
+</div>
 </div>
 
 {% endblock %}
