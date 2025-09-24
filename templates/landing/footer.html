@@ -1,0 +1,71 @@
+{% load static %}
+<footer class="bg-footer text-light pt-5 pb-4 mt-5">
+  <div class="container">
+    <div class="row">
+    
+      <!-- Sobre nosotros -->
+      <div class="col-md-3 mb-4">
+        <h6 class="text-uppercase fw-bold text-white">Sobre nosotros</h6>
+        <ul class="list-unstyled small">
+          <li><a href="#" class="footer-link text-white">Quiénes somos</a></li>
+          <li><a href="#" class="footer-link text-white">Nuestro equipo</a></li>
+          <li><a href="#" class="footer-link text-white">Contáctanos</a></li>
+        </ul>
+      </div>
+
+      <!-- Habitaciones -->
+      <div class="col-md-3 mb-4">
+        <h6 class="text-uppercase fw-bold text-white">Habitaciones</h6>
+        <ul class="list-unstyled small">
+          <li><a href="{% url 'ver_habitaciones' %}" class="footer-link text-white">Disponibilidad</a></li>
+          <li><a href="{% url 'mis_reservas' %}" class="footer-link text-white">Mis reservas</a></li>
+        </ul>
+      </div>
+
+      <!-- Ayuda -->
+      <div class="col-md-3 mb-4">
+        <h6 class="text-uppercase fw-bold text-white">Ayuda</h6>
+        <ul class="list-unstyled small">
+          <li><a href="#" class="footer-link text-white">Preguntas frecuentes</a></li>
+          <li><a href="#" class="footer-link text-white">Política de cancelación</a></li>
+          <li><a href="#" class="footer-link text-white">Soporte</a></li>
+        </ul>
+      </div>
+
+      <!-- Redes sociales -->
+      <div class="col-md-3 mb-4">
+        <h6 class="text-uppercase fw-bold text-white">Síguenos</h6>
+        <div class="d-flex gap-3 mt-2">
+          <a href="#" class="text-light fs-5"><i class="bi bi-facebook"></i></a>
+          <a href="#" class="text-light fs-5"><i class="bi bi-instagram"></i></a>
+          <a href="#" class="text-light fs-5"><i class="bi bi-twitter-x"></i></a>
+          <a href="#" class="text-light fs-5"><i class="bi bi-whatsapp"></i></a>
+        </div>
+      </div>
+
+    </div>
+
+    <hr class="border-secondary my-4">
+    
+    <!-- Logo -->
+    <div class="col-md-12 text-center mb-4">
+      <img src="{% static 'img/logo.png' %}" alt="Logo" width="100" height="auto">
+    </div>
+
+    <!-- Suscripción -->
+    <div class="row justify-content-center">
+      <div class="col-md-6 text-center">
+        <h6 class="text-uppercase fw-bold text-white mb-3">Recibe nuestras ofertas</h6>
+        <form class="d-flex justify-content-center">
+          <input type="email" class="form-control me-2 w-50" placeholder="Ingresa tu email" aria-label="Email">
+          <button class="btn btn-outline-light" type="submit" disabled>Suscribirse</button>
+        </form>
+      </div>
+    </div>
+        
+    <!-- Créditos -->
+    <div class="text-center mt-4 small text-secondary">
+      © 2025 <strong class="text-white">Gestión Hotelera</strong>. Todos los derechos reservados.
+    </div>
+  </div>
+</footer>

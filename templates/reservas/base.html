@@ -13,9 +13,13 @@
 
 </head>
 <body class="d-flex flex-column min-vh-100 ">
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-footer">
     <div class="container">
-      <a class="navbar-brand" href="{% url 'landing' %}">Hotel</a>
+  
+          <a class="navbar-brand" href="{% url 'landing' %}">
+              <img src="{% static 'img/icon.png' %}" width="50px" alt="">
+              <strong>Altavista Hotel</strong>
+          </a>
 
       <!-- Botón para pantallas pequeñas -->
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHotel" aria-controls="navbarHotel" aria-expanded="false" aria-label="Toggle navigation">
@@ -26,8 +30,26 @@
       <div class="collapse navbar-collapse" id="navbarHotel">
         
       <ul class="navbar-nav ms-auto">
-        <li class="nav-item"><a href="{% url 'landing' %}" class="nav-link">Inicio</a></li>
-        <li class="nav-item"><a href="{% url 'ver_habitaciones' %}" class="nav-link">Ver Habitaciones</a></li>
+        
+        <!-- Inicio -->
+        <li class="nav-item">
+          <a class="nav-link active d-flex flex-column align-items-center text-center gap-1" 
+            aria-current="page" href="{% url 'landing' %}">
+              <i class="bi bi-house fs-4"></i>
+              <span>Inicio</span>
+          </a>
+        </li>
+
+        <!-- Ver Habitaciones -->
+
+        <li class="nav-item">
+          <a class="nav-link active d-flex flex-column align-items-center text-center gap-1" 
+            aria-current="page" href="{% url 'ver_habitaciones' %}">
+              <i class="bi bi-door-open fs-4"></i> 
+              <span>Habitaciones</span>
+          </a>
+        </li>
+
         {% if user.is_authenticated %}
         
           <li class="nav-item"><a href="{% url 'mis_reservas' %}" class="nav-link">Mis Reservas</a></li>
@@ -43,8 +65,26 @@
             </form>
           </li>
         {% else %}
-          <li class="nav-item"><a href="{% url 'login' %}" class="nav-link">Ingresar</a></li>
-          <li class="nav-item"><a href="{% url 'registro' %}" class="nav-link">Registrarse</a></li>
+
+          <!-- Ingresar -->
+          <li class="nav-item">
+            <a class="nav-link active d-flex flex-column align-items-center text-center gap-1" 
+              aria-current="page" href="{% url 'login' %}">
+                <i class="bi bi-box-arrow-in-right fs-4"></i>
+                <span>Ingresar</span>
+            </a>
+          </li>
+
+          <!-- Registrarse -->
+
+          <li class="nav-item">
+            <a class="nav-link active d-flex flex-column align-items-center text-center gap-1" 
+              aria-current="page" href="{% url 'registro' %}">
+                <i class="bi bi-person-plus fs-4"></i>
+                <span>Registrarse</span>
+            </a>
+          </li>
+
         {% endif %}
       </ul>
 
@@ -65,10 +105,6 @@
 {% endif %}
     {% block content %}{% endblock %}
   </main>
-
-  <footer class="bg-dark text-white text-center p-3 mt-auto">
-    &copy; 2024 Hotel Reservas. Todos los derechos reservados.
-  </footer>
 
   <!-- Bootstrap JS Bundle -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
