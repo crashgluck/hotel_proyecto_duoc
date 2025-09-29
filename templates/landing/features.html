@@ -1,39 +1,96 @@
-
+{% load static %}
+<!-- Cards -->
 <div class="container px-4 py-5" id="featured-3">
-    <h2 class="pb-2 border-bottom">Servicio hotelero</h2>
-    <div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
-      <div class="feature col">
-        <div class="feature-icon bg-primary bg-gradient">
-          <svg class="bi" width="1em" height="1em"><use xlink:href="#collection"/></svg>
+  <h2 class="pb-3 border-bottom text-center fw-bold mb-5">Servicios Destacados</h2>
+
+  <div class="row g-4 row-cols-1 row-cols-md-2 row-cols-lg-3">
+
+    <!-- Card 1 -->
+    <div class="col-md-12 mb-4">
+      <div class="card h-100 border-0 shadow-sm hover-shadow transition d-flex flex-column">
+        <img src="{% static 'img/habitacion.jpg' %}" alt="Habitaciones Standard Espaciosas" class="card-img-top" style="height: 300px; object-fit: cover;">
+        <div class="card-body d-flex flex-column">
+          <h5 class="card-title">Habitaciones Standard Espaciosas</h5>
+          <p class="card-text">Disfruta de confort y amplitud en nuestras habitaciones estándar, perfectas para tu descanso.</p>
+          <div class="mt-auto">
+            <a href="{% url 'ver_habitaciones' %}" class="btn btn-primary btn-sm d-inline-flex align-items-center gap-1">
+              Ver más <svg class="bi" width="1em" height="1em"><use xlink:href="#chevron-right"/></svg>
+            </a>
+          </div>
         </div>
-        <h2>Habitaciones Standard Espaciosas</h2>
-        <p>Disfruta de confort y amplitud en nuestras habitaciones estándar, perfectas para tu descanso.</p>
-        <a href="{% url 'ver_habitaciones' %}" class="icon-link btn btn-primary">
-          Ir
-          <svg class="bi" width="1em" height="1em"><use xlink:href="#chevron-right"/></svg>
-        </a>
-      </div>
-      <div class="feature col">
-        <div class="feature-icon bg-primary bg-gradient">
-          <svg class="bi" width="1em" height="1em"><use xlink:href="#people-circle"/></svg>
-        </div>
-        <h2>Habitaciones Premium Grandes</h2>
-        <p>Vive una experiencia única en nuestras habitaciones premium, amplias y equipadas para tu máxima comodidad.</p>
-        <a href="{% url 'ver_habitaciones' %}" class="icon-link btn btn-primary">
-          Ir
-          <svg class="bi" width="1em" height="1em"><use xlink:href="#chevron-right"/></svg>
-        </a>
-      </div>
-      <div class="feature col">
-        <div class="feature-icon bg-primary bg-gradient">
-          <svg class="bi" width="1em" height="1em"><use xlink:href="#toggles2"/></svg>
-        </div>
-        <h2>Reserva con Nuestra App</h2>
-        <p>Reserva de manera fácil y rápida desde nuestra app, ¡tu habitación está a solo un clic de distancia!</p>
-        <a href="{% url 'ver_habitaciones' %}" class="icon-link btn btn-primary">
-          Ir
-          <svg class="bi" width="1em" height="1em"><use xlink:href="#chevron-right"/></svg>
-        </a>
       </div>
     </div>
+
+    <!-- Card 2 -->
+    <div class="col-md-12 mb-4">
+      <div class="card h-100 border-0 shadow-sm hover-shadow transition d-flex flex-column">
+        <img src="{% static 'img/habitacion2.jpg' %}" alt="Habitaciones Premium Grandes" class="card-img-top" style="height: 300px; object-fit: cover;">
+        <div class="card-body d-flex flex-column">
+          <h5 class="card-title">Habitaciones Premium Grandes</h5>
+          <p class="card-text">Vive una experiencia única en nuestras habitaciones premium, amplias y equipadas para tu máxima comodidad.</p>
+          <div class="mt-auto">
+            <a href="{% url 'ver_habitaciones' %}" class="btn btn-primary btn-sm d-inline-flex align-items-center gap-1">
+              Ver más <svg class="bi" width="1em" height="1em"><use xlink:href="#chevron-right"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 3 -->
+    <div class="col-md-12 mb-4">
+      <div class="card h-100 border-0 shadow-sm hover-shadow transition d-flex flex-column">
+        <img src="{% static 'img/reserva.jpg' %}" alt="Reserva con Nuestra App" class="card-img-top" style="height: 300px; object-fit: cover;">
+        <div class="card-body d-flex flex-column">
+          <h5 class="card-title">Reserva con Nuestra App</h5>
+          <p class="card-text">Reserva de manera fácil y rápida desde nuestra app, ¡tu habitación está a solo un clic de distancia!</p>
+          <div class="mt-auto">
+            <a href="{% url 'ver_habitaciones' %}" class="btn btn-primary btn-sm d-inline-flex align-items-center gap-1">
+              Ver más <svg class="bi" width="1em" height="1em"><use xlink:href="#chevron-right"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
   </div>
+</div>
+
+
+  <!-- sec ubicación -->
+  <section class="bg-light text-dark mt-5">
+    <div class="container py-4">
+      <div class="row align-items-center">
+        
+        <div class="col-md-6 mb-6">
+          <h6 class="text-uppercase fw-bold">Nuestra ubicación</h6>
+          <p class="text-muted mb-1">Urmeneta 300, Puerto Montt, Chile</p>
+          <p class="text-muted">
+            Estamos ubicados en el corazón de Puerto Montt, Chile. Ven y disfruta de una estancia inolvidable con vistas impresionantes y acceso a las mejores atracciones locales.
+          </p>
+          <a href="https://www.google.com/maps/place/Plaza+de+Armas+Puerto+Montt/@-41.4718691,-72.9395669,18.5z" 
+            target="_blank" 
+            class="btn btn-primary btn-sm">
+            Abrir en Google Maps
+            <i class="bi bi-geo-alt-fill"></i>
+          </a>
+        </div>
+
+        <!-- Mapa -->
+        <div class="col-md-6 mb-6">
+          <div class="ratio ratio-16x9">
+            <iframe 
+              src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d1056.9460603225607!2d-72.93956691613286!3d-41.47186912688595!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x96183a51838a93e1%3A0x380d8e1b3ceaad63!2sPlaza%20de%20Armas%20Puerto%20Montt!5e0!3m2!1ses!2scl!4v1759107803786!5m2!1ses!2scl"  
+              width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+
+
