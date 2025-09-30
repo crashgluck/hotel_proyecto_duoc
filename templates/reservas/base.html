@@ -51,19 +51,31 @@
         </li>
 
         {% if user.is_authenticated %}
-        
-          <li class="nav-item"><a href="{% url 'mis_reservas' %}" class="nav-link">Mis Reservas</a></li>
+          <!-- Mis Reservas -->
+          <li class="nav-item">
+            <a class="nav-link active d-flex flex-column align-items-center text-center gap-1" 
+              aria-current="page" href="{% url 'mis_reservas' %}">
+                <i class="bi bi-calendar-check fs-4"></i>
+                <span>Mis Reservas</span>
+            </a>
+          </li>
 
           {% if user|has_group:"Administradores" %}
             <li class="nav-item"><a href="{% url 'reservas_list_admin' %}" class="nav-link">Panel Admin</a></li>
           {% endif %}
 
-          <li class="nav-item">
-            <form action="{% url 'logout' %}" method="post" style="display: inline;">
-              {% csrf_token %}
-              <button type="submit" class="nav-link btn btn-link" style="border: none; background: none;">Salir</button>
-            </form>
-          </li>
+            <li class="nav-item">
+              <form action="{% url 'logout' %}" method="post" style="display: inline;">
+                {% csrf_token %}
+                <button type="submit" 
+                        class="nav-link btn btn-link d-flex flex-column align-items-center text-center gap-1"
+                        style="border: none; background: none;">
+                  <i class="bi bi-box-arrow-right fs-4"></i>
+                  <span>Salir</span>
+                </button>
+              </form>
+            </li>
+
         {% else %}
 
           <!-- Ingresar -->
