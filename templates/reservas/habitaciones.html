@@ -62,4 +62,21 @@
         {% endfor %}
     </div>
 </div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  const hoy = new Date().toISOString().split("T")[0];
+  const inicioInput = document.getElementById("fecha_inicio");
+  const finInput = document.getElementById("fecha_fin");
+
+  inicioInput.min = hoy;
+  finInput.min = hoy;
+
+  inicioInput.addEventListener("change", function() {
+    finInput.min = this.value;
+  });
+});
+
+</script>
+
 {% endblock %}

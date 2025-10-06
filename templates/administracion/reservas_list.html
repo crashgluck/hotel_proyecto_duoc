@@ -33,9 +33,14 @@
         </td>
         <td>
           {% if not reserva.confirmada %}
-            <a href="{% url 'aprobar_reserva' reserva.id %}" class="btn btn-sm btn-success">Aprobar</a>
+            <a href="{% url 'aprobar_reserva' reserva.id %}" class="btn btn-sm btn-success" onclick="return confirm('¿Estás seguro de que deseas aprobar esta reserva?');">Aprobar</a>
           {% endif %}
-          <a href="{% url 'cancelar_reserva' reserva.id %}" class="btn btn-sm btn-danger">Cancelar</a>
+         <a href="{% url 'cancelar_reserva' reserva.id %}" 
+   class="btn btn-danger"
+   onclick="return confirm('¿Estás seguro de que deseas cancelar esta reserva?');">
+  Cancelar
+</a>
+
         </td>
       </tr>
       {% empty %}
